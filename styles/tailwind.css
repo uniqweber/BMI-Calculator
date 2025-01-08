@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .list li {
+    @apply flex items-center gap-1 text-sm font-semibold text-gray-500;
+  }
+  .list li span {
+    @apply inline-block h-3 w-3  rounded-full;
+  }
+}
