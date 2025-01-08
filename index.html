@@ -6,35 +6,133 @@
     <link rel="stylesheet" href="./styles/build.css" />
     <title>BMI Calculator</title>
   </head>
-  <body>
+  <body class="">
     <main
-      class="h-screen w-full max-w-7xl p-10 bg-white flex items-center justify-center mx-auto"
+      class="min-h-screen w-full max-w-7xl md:p-10 flex items-center justify-center mx-auto"
     >
-      <div class="py-10 px-10 bg-[#F8F5F1] border rounded-2xl w-full">
+      <div
+        class="py-4 md:py-10 px-4 md:px-10 bg-[#F8F5F1] border md:rounded-2xl md:w-full"
+      >
         <h4 class="uppercase text-sm text-gray-900 tracking-widest">
-          <span class="bg-orange-500 px-2.5 py-1 rounded">
+          <span class="bg-orange-500 px-2.5 py-1 rounded font-[500]">
             Fitness & Health
           </span>
         </h4>
-        <div class="grid lg:grid-cols-2 gap-10 mt-10">
-          <div class="">
-            <h2
-              class="uppercase font-bold text-4xl -mt-1.5 text-gray-800 tracking-wider"
-            >
-              bmi Calculator
-            </h2>
-            <p class="text-gray-500 mt-0.5 tracking-wide">
-              Enter the values and click the calculate button to get results
-            </p>
+        <div class="grid  lg:grid-cols-2 gap-10 mt-10">
+          <div class="order-2 lg:order-1 tracking-wide flex flex-col justify-between">
+            <div class="">
+              <h2
+                class="uppercase font-bold text-2xl md:text-4xl -mt-1.5 text-gray-800 tracking-wider"
+              >
+                bmi Calculator
+              </h2>
+              <p class="text-gray-500 mt-0.5 mb-5 lg:mb-0">
+                <span class="text-orange-600 font-[500] uppercase text-sm"
+                  >Form Instructions:</span
+                >
+                Select gender, enter age (no zero/negative), provide height
+                (cm/m), weight (kg), and ensure all fields are filled before
+                submitting.
+              </p>
+            </div>
+            <form action="" class="flex flex-col gap-4">
+              <div>
+                <h5 class="mb-1 text-gray-800 text-sm uppercase font-[500]">
+                  Gender
+                </h5>
+                <div class="flex items-center justify-between gap-5">
+                  <div class="w-full">
+                    <input
+                      type="radio"
+                      id="male"
+                      name="gender"
+                      value="male"
+                      class="hidden peer"
+                    />
+                    <label
+                      for="male"
+                      class="block p-2 w-full text-gray-400 bg-white text-sm text-center uppercase border cursor-pointer peer-checked:border-orange-600 rounded-md peer-checked:text-orange-600 duration-300"
+                    >
+                      Male
+                    </label>
+                  </div>
+                  <div class="w-full">
+                    <input
+                      type="radio"
+                      id="female"
+                      name="gender"
+                      value="female"
+                      class="hidden peer"
+                    />
+                    <label
+                      for="female"
+                      class="block p-2 w-full text-gray-400 bg-white text-sm text-center uppercase border cursor-pointer peer-checked:border-orange-600 rounded-md peer-checked:text-orange-600 duration-300"
+                    >
+                      Female
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="age"
+                  class="mb-1 block text-sm uppercase font-[500] to-gray-800"
+                  >age</label
+                >
+                <input
+                  type="text"
+                  id="age"
+                  class="bg-white border text-gray-500 text-sm rounded-md outline-none focus:border-orange-500 block w-full duration-300 p-2"
+                  placeholder="02-120 YEAR"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="height"
+                  class="mb-1 block text-sm uppercase font-[500] to-gray-800"
+                  >height</label
+                >
+                <input
+                  type="text"
+                  id="height"
+                  class="bg-white border text-gray-500 text-sm rounded-md outline-none focus:border-orange-500 block w-full duration-300 p-2"
+                  placeholder="HEIGHT CM"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="Weight"
+                  class="mb-1 block text-sm uppercase font-[500] to-gray-800"
+                  >Weight</label
+                >
+                <input
+                  type="text"
+                  id="Weight"
+                  class="bg-white border text-gray-500 text-sm rounded-md outline-none focus:border-orange-500 block w-full duration-300 p-2"
+                  placeholder="WEIGHT KG"
+                  required
+                />
+              </div>
+
+              <button
+                class="p-2 bg-orange-500 block w-full uppercase text-sm font-[500] mt-6 rounded-md"
+              >
+                Calculate
+              </button>
+            </form>
           </div>
           <div
-            class="bg-white px-8 py-7 shadow-[1px_1px_40px_0px_#f7fafc] rounded-lg tracking-wide"
+            class="bg-white lg:order-2 px-8 py-7  shadow-[1px_1px_40px_0px_#f7fafc] rounded-lg tracking-wide"
           >
-            <h5 class="text-gray-800 font-bold uppercase text-lg mb-2 tracking-normal">
+            <h5
+              class="text-gray-800 font-bold uppercase text-lg mb-2 tracking-normal"
+            >
               Your Results
             </h5>
             <hr class="bg-gray-400" />
-            <p class="mt-2 text-gray-500  leading-5">
+            <p class="mt-2 text-gray-500 leading-5">
               A BMI between 18.5 and 24.9 is considered normal weight, reducing
               the risk of weight-related health issues.
             </p>
@@ -44,7 +142,7 @@
             >
               BMI = 19.4
             </div>
-            <ul class="list flex items-center justify-center gap-4 mt-8">
+            <ul class="list flex flex-col md:flex-row flex-wrap  items-center justify-center gap-2 md:gap-4 mt-8">
               <li>
                 <span class="bg-blue-500"></span>
                 Under Weight
