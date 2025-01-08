@@ -18,8 +18,10 @@
             Fitness & Health
           </span>
         </h4>
-        <div class="grid  lg:grid-cols-2 gap-10 mt-10">
-          <div class="order-2 lg:order-1 tracking-wide flex flex-col justify-between">
+        <div class="grid lg:grid-cols-2 gap-10 mt-10">
+          <div
+            class="order-2 lg:order-1 tracking-wide flex flex-col justify-between"
+          >
             <div class="">
               <h2
                 class="uppercase font-bold text-2xl md:text-4xl -mt-1.5 text-gray-800 tracking-wider"
@@ -35,8 +37,12 @@
                 submitting.
               </p>
             </div>
-            <form action="" class="flex flex-col gap-4">
-              <div>
+            <form id="calculateForm" action="" class="flex flex-col gap-4">
+              <div class="relative">
+                <p
+                  id="error"
+                  class="absolute -top-10 left-0 text-sm font-[500] text-red-600 duration-300"
+                ></p>
                 <h5 class="mb-1 text-gray-800 text-sm uppercase font-[500]">
                   Gender
                 </h5>
@@ -44,10 +50,11 @@
                   <div class="w-full">
                     <input
                       type="radio"
-                      id="male"
                       name="gender"
+                      id="male"
                       value="male"
                       class="hidden peer"
+                      checked
                     />
                     <label
                       for="male"
@@ -59,8 +66,8 @@
                   <div class="w-full">
                     <input
                       type="radio"
-                      id="female"
                       name="gender"
+                      id="female"
                       value="female"
                       class="hidden peer"
                     />
@@ -80,7 +87,7 @@
                   >age</label
                 >
                 <input
-                  type="text"
+                  type="number"
                   id="age"
                   class="bg-white border text-gray-500 text-sm rounded-md outline-none focus:border-orange-500 block w-full duration-300 p-2"
                   placeholder="02-120 YEAR"
@@ -94,7 +101,7 @@
                   >height</label
                 >
                 <input
-                  type="text"
+                  type="number"
                   id="height"
                   class="bg-white border text-gray-500 text-sm rounded-md outline-none focus:border-orange-500 block w-full duration-300 p-2"
                   placeholder="HEIGHT CM"
@@ -103,13 +110,13 @@
               </div>
               <div>
                 <label
-                  for="Weight"
+                  for="weight"
                   class="mb-1 block text-sm uppercase font-[500] to-gray-800"
                   >Weight</label
                 >
                 <input
-                  type="text"
-                  id="Weight"
+                  type="number"
+                  id="weight"
                   class="bg-white border text-gray-500 text-sm rounded-md outline-none focus:border-orange-500 block w-full duration-300 p-2"
                   placeholder="WEIGHT KG"
                   required
@@ -117,6 +124,7 @@
               </div>
 
               <button
+                type="submit"
                 class="p-2 bg-orange-500 block w-full uppercase text-sm font-[500] mt-6 rounded-md"
               >
                 Calculate
@@ -124,7 +132,7 @@
             </form>
           </div>
           <div
-            class="bg-white lg:order-2 px-8 py-7  shadow-[1px_1px_40px_0px_#f7fafc] rounded-lg tracking-wide"
+            class="bg-white lg:order-2 px-8 py-7 shadow-[1px_1px_40px_0px_#f7fafc] rounded-lg tracking-wide"
           >
             <h5
               class="text-gray-800 font-bold uppercase text-lg mb-2 tracking-normal"
@@ -138,17 +146,21 @@
             </p>
 
             <div
-              class="w-44 mx-auto h-44 rounded-full border-[25px] bg-white mt-10 border-t-green-500 border-r-blue-500 border-b-yellow-500 border-l-red-500 flex items-center justify-center font-bold p-1"
+              id="bmiChart"
+              class="w-44 mx-auto h-44 rounded-full border-[25px] bg-white mt-10 flex items-center justify-center font-bold p-1 gap-1 transition-all duration-300 border-t-green-600 border-r-blue-500 border-b-yellow-500 border-l-red-500"
             >
-              BMI = 19.4
+              <span>BMI =</span>
+              <span id="bmiResult">00.00</span>
             </div>
-            <ul class="list flex flex-col md:flex-row flex-wrap  items-center justify-center gap-2 md:gap-4 mt-8">
+            <ul
+              class="list flex flex-col md:flex-row flex-wrap items-center justify-center gap-2 md:gap-4 mt-8"
+            >
               <li>
                 <span class="bg-blue-500"></span>
                 Under Weight
               </li>
               <li>
-                <span class="bg-green-500"></span>
+                <span class="bg-green-600"></span>
                 Normal Weight
               </li>
               <li>
@@ -160,29 +172,32 @@
                 Obese
               </li>
             </ul>
-            <ul class="mt-10 text-sm text-gray-500">
+            <ul class="mt-5 space-y-1 text-sm text-gray-500">
+              <li>
+                <span class="font-semibold text-gray-800"
+                  >Your BMI Status:</span
+                >
+                <span id="userBmiShow" class="font-[500]"></span>
+              </li>
+              <li>
+                <span class="font-semibold text-gray-800">Age:</span>
+                <span id="userAge">0</span>
+                <span>years</span>
+                <span class="capitalize" id="userGender"></span>
+              </li>
+              <li>
+                <span class="font-semibold text-gray-800"> BMI Prime:</span>
+                <span id="bmiPrime">0.00</span>
+              </li>
+              <li>
+                <span class="font-semibold text-gray-800">Ponderal Index:</span>
+                <span id="ponderalIndex">00.0</span>
+              </li>
               <li>
                 <span class="font-semibold text-gray-800"
                   >Healthy BMI Range:</span
                 >
-                18.5 kg/m<sup>2</sup> - 25 kg/m<sup>2</sup>
-              </li>
-
-              <li>
-                <span class="font-semibold text-gray-800"
-                  >Healthy Weight You:</span
-                >
-                <span>53.5</span>kg - <span>72.3</span>kg
-              </li>
-              <li>
-                <span class="font-semibold text-gray-800"> BMI Prime:</span>
-                <span>0.78</span>
-              </li>
-              <li>
-                <span class="font-semibold text-gray-800">Ponderal Index:</span>
-                <span>11.5</span>
-                kg/m
-                <sup>2</sup>
+                <span>18.5 - 24.9</span>
               </li>
             </ul>
           </div>
